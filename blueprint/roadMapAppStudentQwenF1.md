@@ -81,7 +81,7 @@ Offline “cuando tengamos tiempo”
 
 * Los modelos de datos
 * Las colisiones de estado
-* La semántica de “verdad” (EduSys vs local)
+* La semántica de “verdad” (SAEFL vs local)
 
 Si se ignora ahora, luego:
 
@@ -278,7 +278,7 @@ FASE 1 solo se considera completa si:
 * [ ] Login institucional real
 * [ ] Cambio de rol sin reinstalar
 * [ ] Cero lógica pedagógica en UI
-* [ ] Cache local coherente con EduSys
+* [ ] Cache local coherente con SAEFL
 
 ---
 

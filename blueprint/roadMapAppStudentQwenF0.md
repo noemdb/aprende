@@ -58,10 +58,10 @@ Reglas ejecutables:
 
 Reglas ejecutables:
 
-* EduSys (`s2526`) es **read-only** desde la app gamificada.
+* SAEFL (`s2526`) es **read-only** desde la app gamificada.
 * Si hay conflicto:
 
-  * EduSys gana
+  * SAEFL gana
   * la app se reconcilia
 * No existen:
 

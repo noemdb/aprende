@@ -13,7 +13,7 @@ Antes de cualquier línea de código, el equipo debe operar bajo estas reglas:
 - Cero aleatoriedad en la evaluación del desempeño académico  
 
 **Contexto académico como fuente de verdad**  
-- El perfil del estudiante se sincroniza con el sistema institucional (EduSys)  
+- El perfil del estudiante se sincroniza con el sistema institucional (SAEFL)  
 - Las materias, grados y lapsos provienen del ciclo académico vigente  
 - Las prácticas se generan según el avance curricular real del estudiante  
 
@@ -63,12 +63,12 @@ Establecer base técnica robusta para desarrollo cross-platform con integración
 
 ### 1.2 Conexión a sistemas académicos existentes  
 **Resultado esperado**  
-- Sincronización segura con EduSys (base de datos `s2526`)  
+- Sincronización segura con SAEFL (base de datos `s2526`)  
 - Cacheo offline de datos académicos críticos  
 - Estrategia de reconciliación de datos en entornos con conectividad intermitente  
 
 **Acciones**  
-- Diseñar adaptador de API REST para EduSys con endpoints específicos  
+- Diseñar adaptador de API REST para SAEFL con endpoints específicos  
 - Implementar servicio de sincronización incremental con timestamps  
 - Configurar SQLite local para almacenamiento offline  
 - Establecer protocolo de autenticación OAuth 2.0 con el SGA  
@@ -189,7 +189,7 @@ types/
 ## FASE 3 — REPOSITORIOS DE DATOS ACADÉMICOS  
 
 **Objetivo**  
-Encapsular COMPLEJIDAD SQL y sincronización con EduSys fuera de los componentes UI.  
+Encapsular COMPLEJIDAD SQL y sincronización con SAEFL fuera de los componentes UI.  
 
 ### 3.1 Repositories por agregado académico  
 
@@ -355,7 +355,7 @@ Entregar versión mínima viable con ciclo completo: práctica → feedback → 
 - Retroalimentación inmediata post-ejercicio (explicación pedagógica)  
 - Sistema XP básico con progreso visual en barra de nivel  
 - 5 insignias fundamentales (Bienvenido, Primer Acierto, 3 Días Streak, 50 XP, Tema Completado)  
-- Sincronización automática con EduSys al iniciar sesión  
+- Sincronización automática con SAEFL al iniciar sesión  
 
 ### 7.2 UX/UI crítica para estudiantes  
 - Interfaz minimalista con colores institucionales  
@@ -466,11 +466,11 @@ Nivel 4: Diamante → Excelencia institucional (top 5% sección)
 ## FASE 11 — INTEGRACIÓN CON CICLO ACADÉMICO INSTITUCIONAL  
 
 **Objetivo**  
-Sincronizar gamificación con evaluaciones formales del EduSys.  
+Sincronizar gamificación con evaluaciones formales del SAEFL.  
 
 ### 11.1 Puentes pedagógicos críticos  
 
-| Evento EduSys | Acción en app gamificada | Valor XP |
+| Evento SAEFL | Acción en app gamificada | Valor XP |
 |---------------|--------------------------|----------|
 | Cierre de lapso (`lapsos.status_active = 0`) | Generar "Repaso Final" obligatorio | 200 XP |
 | Nota < 12/20 en `activities` | Activar modo "Refuerzo Prioritario" | +30% XP |
@@ -517,7 +517,7 @@ Garantizar estabilidad, seguridad y capacidad para toda la institución.
 
 Este roadmap está diseñado para:  
 ✅ **Priorizar impacto pedagógico** — Cada mecánica de juego está validada por teoría del aprendizaje  
-✅ **Respetar el ecosistema institucional** — Integración profunda con EduSys (base de datos `s2526`)  
+✅ **Respetar el ecosistema institucional** — Integración profunda con SAEFL (base de datos `s2526`)  
 ✅ **Escalar progresivamente** — MVP funcional en 12 semanas, madurez completa en 9 meses  
 ✅ **Garantizar equidad** — Acceso offline, diseño inclusivo, sin paywalls para funcionalidades core  
 

@@ -1,7 +1,7 @@
 export default function Testimonials() {
   const testimonials = [
     {
-      quote: "StudentQwen ha revolucionado la forma en que mis estudiantes practican fuera del aula. La correlación entre el engagement en la app y el rendimiento académico es impresionante.",
+      quote: "EduQuest ha revolucionado la forma en que mis estudiantes practican fuera del aula. La correlación entre el engagement en la app y el rendimiento académico es impresionante.",
       author: "Prof. Carmen",
       role: "Docente de Matemáticas",
       image: "👩‍🏫",
@@ -69,7 +69,7 @@ export default function Testimonials() {
               ))}
             </div>
             <blockquote className="text-2xl font-bold text-gray-900 max-w-3xl mx-auto mb-6">
-              "El 65% de los docentes incorporan insights de StudentQwen en su planificación pedagógica"
+              "El 65% de los docentes incorporan insights de EduQuest en su planificación pedagógica"
             </blockquote>
             <p className="text-gray-600">
               Estudio realizado con 500+ docentes de instituciones educativas que utilizan la plataforma

@@ -60,12 +60,12 @@ export default function Benefits() {
                 backgroundImage: `linear-gradient(var(--tw-gradient-stops))`,
                 '--tw-gradient-from': role.color.split(' ')[0],
                 '--tw-gradient-to': role.color.split(' ')[2],
-              }}></div>
-              
+              } as React.CSSProperties}></div>
+
               <div className="relative z-10">
                 <div className="text-6xl mb-4">{role.icon}</div>
                 <h3 className="text-2xl font-bold text-gray-900 mb-6">{role.role}</h3>
-                
+
                 <ul className="space-y-3">
                   {role.benefits.map((benefit, i) => (
                     <li key={i} className="flex items-start">

@@ -2,14 +2,14 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
   display: 'swap',
 })
 
 export const metadata: Metadata = {
-  title: 'StudentQwen - Ecosistema Educativo Inteligente',
+  title: 'EduQuest - Ecosistema Educativo Inteligente',
   description: 'Plataforma integral de gestión académica y gamificación con IA.',
 }
 

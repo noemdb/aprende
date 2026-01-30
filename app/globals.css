@@ -1,33 +1,47 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --background: #020617; /* El azul-negro profundo de EduSys */
-  --card-bg: #0b1121;
-  --accent-blue: #2563eb;
-  --text-dim: #94a3b8;
+@layer base {
+  :root {
+    --background: #0f172a;
+    --background-gradient: linear-gradient(to bottom, #0f172a, #080c1d);
+    --card-bg: rgba(30, 41, 59, 0.5);
+    --primary: #059669;
+    --primary-hover: #047857;
+    --accent-blue: #10b981;
+    --accent-cyan: #2dd4bf;
+    --text-main: #f8fafc;
+    --text-secondary: #94a3b8;
+  }
+
+  body {
+    @apply bg-[#0f172a] text-slate-200 antialiased selection:bg-emerald-500/30 selection:text-white font-sans;
+    background-image: var(--background-gradient);
+    background-attachment: fixed;
+  }
 }
 
-body {
-  background-color: var(--background);
-  color: white;
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-}
+@layer utilities {
+  .glass {
+    @apply bg-slate-900/50 backdrop-blur-md border border-slate-700/30;
+  }
 
-/* El efecto de resplandor sutil que se ve en la demo de la imagen */
-.glow-effect {
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
-  z-index: 0;
-  pointer-events: none;
-}
+  .glass-card {
+    @apply bg-slate-900/40 backdrop-blur-md border border-slate-700/30 rounded-3xl transition-all duration-300;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400;
+  }
 
-.text-gradient {
-  background: linear-gradient(135deg, #3b82f6, #06b6d4);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  .text-gradient-brand {
+    @apply bg-clip-text text-transparent bg-gradient-to-br from-emerald-500 to-teal-400;
+  }
+
+  .bg-glow {
+    @apply absolute w-[600px] h-[600px] rounded-full blur-[100px] opacity-20 pointer-events-none;
+  }
+  
+  .shine-effect {
+    @apply absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out bg-gradient-to-r from-transparent via-white/5 to-transparent z-10;
+  }
 }

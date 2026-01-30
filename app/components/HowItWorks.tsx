@@ -2,8 +2,8 @@ export default function HowItWorks() {
   const steps = [
     {
       number: '1',
-      title: 'Sincronización con EduSys',
-      description: 'Al iniciar sesión con tus credenciales institucionales, StudentQwen se conecta automáticamente con el sistema EduSys para obtener tu perfil académico, materias actuales y avance curricular.',
+      title: 'Sincronización con SAEFL',
+      description: 'Al iniciar sesión con tus credenciales institucionales, EduQuest se conecta automáticamente con el sistema SAEFL para obtener tu perfil académico, materias actuales y avance curricular.',
       icon: '🔐',
     },
     {
@@ -37,7 +37,7 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Cómo Funciona StudentQwen
+            Cómo Funciona EduQuest
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Un ciclo completo de aprendizaje gamificado en 5 pasos simples
@@ -52,9 +52,8 @@ export default function HowItWorks() {
             {steps.map((step, index) => (
               <div
                 key={index}
-                className={`relative flex flex-col md:flex-row ${
-                  index % 2 === 0 ? 'md:items-start' : 'md:items-end'
-                }`}
+                className={`relative flex flex-col md:flex-row ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'
+                  }`}
               >
                 {/* Número del paso */}
                 <div className="absolute -left-12 md:left-1/2 md:transform md:-translate-x-1/2 z-10">
@@ -65,9 +64,8 @@ export default function HowItWorks() {
 
                 {/* Contenido del paso */}
                 <div
-                  className={`w-full md:w-5/12 ${
-                    index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'
-                  } card-hover`}
+                  className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:ml-auto' : 'md:mr-auto'
+                    } card-hover`}
                 >
                   <div className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100">
                     <div className="text-5xl mb-4">{step.icon}</div>
@@ -87,7 +85,7 @@ export default function HowItWorks() {
               Listo para Transformar tu Aprendizaje?
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-              Únete a miles de estudiantes que ya están mejorando sus resultados académicos con StudentQwen
+              Únete a miles de estudiantes que ya están mejorando sus resultados académicos con EduQuest
             </p>
             <a
               href="#cta"
