@@ -45,16 +45,16 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
                         : 'w-64'  // Expandido: 256px
                 } sidebar bg-[#0a1f18] border-r border-[#1b3c2e] flex flex-col z-20 transition-all duration-300`}
             >
-                <div className={`p-3 border-b border-[#1b3c2e] flex items-center justify-between ${
+                <div className={`p-3 border-b border-[#1b3c2e] flex justify-between ${
                     isCollapsed ? 'flex-col gap-1' : ''
                 }`}>
                     {!isCollapsed && (
                         <>
                             <Link href="/" className="flex items-center gap-2">
                                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4a7c59] to-[#1b3c2e] flex items-center justify-center border border-[#2e5c4a]">
-                                    <span className="text-white font-bold text-xl">E</span>
+                                    <span className="text-white font-bold text-xl">ES</span>
                                 </div>
-                                <span className="font-bold text-xl text-white tracking-tight">Kainos Academy</span>
+                                <span className="font-bold text-xl text-white tracking-tight items-center">Kainos Academy</span>
                             </Link>
                             <div className="mt-1 text-xs text-[#a3b18a] uppercase tracking-wider font-bold ml-5">Módulo Estudiante</div>
                         </>
@@ -84,7 +84,7 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
                             <Link
                                 key={item.href}
                                 href={item.href}
-                                className={`flex items-center justify-center ${
+                                className={`flex items-center ${
                                     isCollapsed ? 'p-1 mb-2' : 'gap-3 px-3 py-3'
                                 } rounded-xl transition-all duration-200 group nav-item relative ${
                                     isActive
