@@ -3,7 +3,7 @@ export default function HowItWorks() {
     {
       number: '1',
       title: 'Sincronización con SAEFL',
-      description: 'Al iniciar sesión con tus credenciales institucionales, EduQuest se conecta automáticamente con el sistema SAEFL para obtener tu perfil académico, materias actuales y avance curricular.',
+      description: 'Al iniciar sesión con tus credenciales institucionales, Kainos Academy se conecta automáticamente con el sistema SAEFL para obtener tu perfil académico, materias actuales y avance curricular.',
       icon: '🔐',
     },
     {
@@ -37,7 +37,7 @@ export default function HowItWorks() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            Cómo Funciona EduQuest
+            Cómo Funciona Kainos Academy
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Un ciclo completo de aprendizaje gamificado en 5 pasos simples
@@ -85,7 +85,7 @@ export default function HowItWorks() {
               Listo para Transformar tu Aprendizaje?
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto mb-8">
-              Únete a miles de estudiantes que ya están mejorando sus resultados académicos con EduQuest
+              Únete a miles de estudiantes que ya están mejorando sus resultados académicos con Kainos Academy
             </p>
             <a
               href="#cta"

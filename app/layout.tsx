@@ -9,7 +9,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'EduQuest - Ecosistema Educativo Inteligente',
+  title: 'Kainos Academy - Ecosistema Educativo Inteligente',
   description: 'Plataforma integral de gestión académica y gamificación con IA.',
 }
 

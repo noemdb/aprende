@@ -54,7 +54,7 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
                                 <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#4a7c59] to-[#1b3c2e] flex items-center justify-center border border-[#2e5c4a]">
                                     <span className="text-white font-bold text-xl">E</span>
                                 </div>
-                                <span className="font-bold text-xl text-white tracking-tight">EduQuest</span>
+                                <span className="font-bold text-xl text-white tracking-tight">Kainos Academy</span>
                             </Link>
                             <div className="mt-1 text-xs text-[#a3b18a] uppercase tracking-wider font-bold ml-5">Módulo Estudiante</div>
                         </>

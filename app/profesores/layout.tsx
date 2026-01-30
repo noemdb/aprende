@@ -21,9 +21,9 @@ export default function TeachersLayout({ children }: { children: React.ReactNode
                 <div className="p-6 border-b border-slate-800">
                     <Link href="/" className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-                            <span className="text-emerald-500 font-bold text-xl">E</span>
+                            <span className="text-emerald-500 font-bold text-xl">K</span>
                         </div>
-                        <span className="font-bold text-xl text-white tracking-tight">EduQuest</span>
+                        <span className="font-bold text-xl text-white tracking-tight">Kainos Academy</span>
                     </Link>
                     <div className="mt-2 text-xs text-slate-500 uppercase tracking-wider font-semibold">Portal Docente</div>
                 </div>

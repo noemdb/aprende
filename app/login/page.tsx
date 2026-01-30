@@ -42,7 +42,7 @@ export default function LoginPage() {
                                 </span>
                             </div>
                             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-2 tracking-tight">
-                                EduQuest
+                                Kainos Academy
                             </h1>
                             <p className="text-emerald-400 text-lg font-medium mb-6">
                                 Tu Compañero de Estudio

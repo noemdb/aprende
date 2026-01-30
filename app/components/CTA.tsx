@@ -7,7 +7,7 @@ export default function CTA() {
             Comienza tu Viaje de Aprendizaje Gamificado
           </h2>
           <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
-            Únete hoy mismo a EduQuest y descubre cómo el aprendizaje puede ser motivador, efectivo y divertido.
+            Únete hoy mismo a Kainos Academy y descubre cómo el aprendizaje puede ser motivador, efectivo y divertido.
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center gap-4">
