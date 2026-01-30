@@ -23,7 +23,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                         <Terminal size={18} />
                     </div>
                     <div>
+                        <Link href="/" className="flex items-center gap-2">
                         <div className="font-bold text-lg text-white tracking-tight leading-none">Kainos Academy</div>
+                        </Link>
                         <div className="text-[10px] text-blue-400 font-mono mt-1 tracking-widest uppercase">Admin Console</div>
                     </div>
                 </div>
