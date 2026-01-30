@@ -14,7 +14,7 @@ const phases = [
     { id: "09", title: "Diagnósticos con IA", desc: "Generación asistida de reportes para intervención docente." },
     { id: "10", title: "Insignias Avanzadas", desc: "Jerarquías de logros (Bronce a Diamante) y modo social." },
     { id: "11", title: "Ciclo Académico", desc: "Sincronización con hitos evaluativos y cierre de lapsos." },
-    { id: "12", title: "Escalabilidad", desc: "Optimización offline-first, auditoría y soporte masivo." },
+    { id: "12", title: "Escalabilidad", desc: "Optimización continua, auditoría y soporte masivo." },
 ];
 
 export default function Roadmap() {

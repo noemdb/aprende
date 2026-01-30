@@ -45,7 +45,7 @@ export default function LoginPage() {
                                 EduQuest
                             </h1>
                             <p className="text-emerald-400 text-lg font-medium mb-6">
-                                Tu Compañero de Estudio Gamificado
+                                Tu Compañero de Estudio
                             </p>
                             <p className="text-slate-400 leading-relaxed max-w-sm">
                                 Accede a tus cursos, monitorea tu progreso en SAEFL y continúa tu racha de aprendizaje hoy mismo.

@@ -22,14 +22,14 @@ const features = [
         icon: BrainCircuit,
         color: "text-teal-400"
     },
+    // {
+    //     title: "Modo Offline First",
+    //     description: "Descarga tus prácticas y estudia sin conexión. El progreso se sincroniza automáticamente cuando vuelves a estar online.",
+    //     icon: WifiOff,
+    //     color: "text-orange-400"
+    // },
     {
-        title: "Modo Offline First",
-        description: "Descarga tus prácticas y estudia sin conexión. El progreso se sincroniza automáticamente cuando vuelves a estar online.",
-        icon: WifiOff,
-        color: "text-orange-400"
-    },
-    {
-        title: "Insignias Reales",
+        title: "Insignias",
         description: "Colecciona insignias por dominio académico, constancia y velocidad. Conviértete en un 'Maestro de Matemáticas'.",
         icon: Award,
         color: "text-yellow-400"

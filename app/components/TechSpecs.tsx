@@ -6,7 +6,7 @@ const specs = [
     { label: "Frontend Móvil", value: "React Native + Expo" },
     { label: "Frontend Web", value: "Next.js + Tailwind CSS" },
     { label: "Backend", value: "Node.js + Express" },
-    { label: "Base de Datos", value: "MariaDB + SQLite (Offline)" },
+    { label: "Base de Datos", value: "MySQL 10.4" },
     { label: "Sync", value: "Incremental Timestamp Protocol" },
     { label: "Analytics", value: "Mixpanel / Amplitude" }
 ];

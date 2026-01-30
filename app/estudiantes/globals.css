@@ -1,0 +1,124 @@
+/* /home/nuser/code/aprende/app/estudiantes/globals.css */
+:root {
+  /* Verde oscuro base #081c15 */
+  --dark-green-primary: #081c15;
+  --dark-green-secondary: #1b3c2e;
+  --dark-green-tertiary: #2e5c4a;
+  
+  /* Tonos claros de verde */
+  --light-green-primary: #4a7c59;
+  --light-green-secondary: #6a9c7a;
+  --light-green-tertiary: #8abf9c;
+  
+  /* Tonos de énfasis */
+  --accent-green: #a3b18a;
+  --highlight-green: #cbeac5;
+  --success-green: #8fa982;
+  
+  /* Fondo y superficies */
+  --background-dark: #05120d;
+  --surface-dark: #0a1f18;
+  --surface-light: #152e25;
+  
+  /* Texto */
+  --text-primary: #f0f8ef;
+  --text-secondary: #cbeac5;
+  --text-muted: #a3b18a;
+  
+  /* Bordes */
+  --border-dark: #1b3c2e;
+  --border-light: #2e5c4a;
+  
+  /* Estadísticas gamificadas */
+  --streak-color: #e9c46a; /* Amarillo para rachas */
+  --xp-color: #4cc9f0;     /* Azul para XP */
+  --level-color: #f72585;  /* Rosa para niveles */
+}
+
+.student-layout {
+  background-color: var(--background-dark) !important;
+  color: var(--text-primary) !important;
+}
+
+.student-layout .sidebar {
+  background-color: var(--surface-dark) !important;
+  border-right: 1px solid var(--border-dark) !important;
+}
+
+.student-layout .sidebar .logo-section {
+  border-bottom: 1px solid var(--border-dark) !important;
+}
+
+.student-layout .sidebar .nav-item {
+  color: var(--text-muted) !important;
+}
+
+.student-layout .sidebar .nav-item:hover {
+  color: var(--text-primary) !important;
+  background-color: var(--surface-light) !important;
+}
+
+.student-layout .sidebar .nav-item.active {
+  background-color: var(--dark-green-tertiary) !important;
+  color: var(--highlight-green) !important;
+  border: 1px solid var(--accent-green) !important;
+  box-shadow: 0 0 10px rgba(163, 177, 138, 0.2) !important;
+}
+
+.student-layout .main-content {
+  background: radial-gradient(
+    ellipse at top,
+    color-mix(in srgb, var(--dark-green-primary) 20%, black) 0%,
+    var(--background-dark) 50%,
+    color-mix(in srgb, var(--surface-dark) 80%, black) 100%
+  ) !important;
+}
+
+.student-layout .header {
+  background-color: color-mix(in srgb, var(--surface-dark) 50%, transparent) !important;
+  backdrop-filter: blur(10px) !important;
+  border-bottom: 1px solid var(--border-dark) !important;
+}
+
+.student-layout .gamification-stats .streak {
+  background-color: color-mix(in srgb, var(--streak-color) 20%, transparent) !important;
+  color: var(--streak-color) !important;
+  border: 1px solid color-mix(in srgb, var(--streak-color) 30%, transparent) !important;
+}
+
+.student-layout .gamification-stats .xp-bar circle:nth-child(1) {
+  stroke: var(--surface-light) !important;
+}
+
+.student-layout .gamification-stats .xp-bar circle:nth-child(2) {
+  stroke: var(--xp-color) !important;
+}
+
+.student-layout .dashboard-card {
+  background-color: color-mix(in srgb, var(--surface-light) 40%, transparent) !important;
+  border: 1px solid var(--border-light) !important;
+  backdrop-filter: blur(5px) !important;
+}
+
+.student-layout .primary-button {
+  background: linear-gradient(to right, var(--light-green-primary), var(--accent-green)) !important;
+  color: var(--text-primary) !important;
+}
+
+.student-layout .primary-button:hover {
+  filter: brightness(1.1) !important;
+}
+
+.student-layout .progress-bar-bg {
+  background-color: var(--surface-dark) !important;
+}
+
+.student-layout .progress-bar-fill {
+  background: linear-gradient(to right, var(--light-green-primary), var(--accent-green)) !important;
+  box-shadow: 0 0 10px color-mix(in srgb, var(--light-green-primary) 50%, transparent) !important;
+}
+
+.student-layout .badge-container {
+  background-color: color-mix(in srgb, var(--surface-dark) 50%, transparent) !important;
+  border: 1px solid var(--border-light) !important;
+}

@@ -25,7 +25,7 @@ export default function Hero() {
                             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.1] mb-8">
                                 EduQuest: <br />
                                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-300">
-                                    Tu Compañero de Estudio Gamificado
+                                    Tu Compañero de Estudio
                                 </span>
                             </h1>
                         </FadeIn>
