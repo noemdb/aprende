@@ -9,7 +9,7 @@ export default function Benefits() {
         'Aprendizaje adaptado a tu ritmo y nivel cognitivo',
         'Retroalimentación inmediata con explicaciones pedagógicas',
         'Celebración de logros con insignias y reconocimientos',
-        'Acceso offline para zonas con conectividad limitada',
+        // 'Acceso offline para zonas con conectividad limitada',
       ],
     },
     {

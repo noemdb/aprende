@@ -1,6 +1,6 @@
 'use client';
 
-import FadeIn from '../../components/FadeIn';
+import FadeIn from '../../../components/FadeIn';
 import { User, Medal, Flame, Target, Calendar, Edit2, Share2 } from 'lucide-react';
 
 export default function ProfilePage() {

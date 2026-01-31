@@ -1,6 +1,6 @@
 'use client';
 
-import FadeIn from '../../components/FadeIn';
+import FadeIn from '../../../components/FadeIn';
 import { BookOpen, Star, MoreHorizontal, ArrowRight } from 'lucide-react';
 
 export default function MateriasPage() {

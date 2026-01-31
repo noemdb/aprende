@@ -42,7 +42,7 @@ export default function ModuleAccess() {
             {/* Background Image */}
             <div
                 className="absolute inset-0 z-0 bg-cover bg-center opacity-20 mix-blend-screen"
-                style={{ backgroundImage: "url('/assets/modules-bg.png')" }}
+                style={{ backgroundImage: "url('/aprende/assets/modules-bg.png')" }}
             />
             <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#0f172a] via-transparent to-[#0f172a]" />
 

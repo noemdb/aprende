@@ -97,7 +97,6 @@ Mismo método para leer y escribir
 
 ### Por qué es irreversible
 
-* Offline sync
 * Performance
 * Seguridad
 
@@ -151,7 +150,6 @@ Confiar en que “no se va a repetir”
 
 ### Por qué no se puede revertir luego
 
-* Reintentos offline
 * Latencia móvil
 * Fallos intermitentes
 
@@ -203,7 +201,6 @@ Cache como almacenamiento informal
 
 ### Por qué es irreversible
 
-* Offline-first
 * Conflictos de estado
 * Debug infernal
 
@@ -264,7 +261,6 @@ FASE 3 se aprueba solo si:
 * [ ] Ningún componente UI toca SQL
 * [ ] Ningún servicio construye queries
 * [ ] Transacciones cubren todos los efectos críticos
-* [ ] Idempotencia probada en offline/retry
 * [ ] Repositorios respetan fronteras de dominio
 
 ---

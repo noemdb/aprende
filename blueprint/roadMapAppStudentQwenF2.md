@@ -244,7 +244,6 @@ Aplanar entidades para “simplicidad”
 ### Por qué no se puede revertir fácilmente
 
 * Queries complejas
-* Offline reconciliation
 * Auditoría
 
 ### Decisión final

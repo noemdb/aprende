@@ -31,7 +31,7 @@ Antes de cualquier línea de código, el equipo debe operar bajo estas reglas:
  **Stack Tecnológico
 | Capa | Tecnología | Justificación |
 |------|------------|---------------|
-| **Frontend móvil** | React Native (o Flutter) | Cross-platform, performance nativo |
+| **Frontend** | Next.js (Mobile First) | PWA instalable, acceso universal |
 | **Frontend web** | Next.js + Tailwind | Dashboard docentes/padres |
 | **Backend** | Node.js + Express | Ecosistema robusto, escalable |
 | **Base de datos** | MySQL MariaDB | Relacional para datos estructurados|
@@ -41,41 +41,39 @@ Antes de cualquier línea de código, el equipo debe operar bajo estas reglas:
 
 ---
 
-## FASE 1 — FUNDACIÓN TÉCNICA (infraestructura móvil)  
+## FASE 1 — FUNDACIÓN TÉCNICA (Infraestructura Web)  
 
 **Objetivo**  
-Establecer base técnica robusta para desarrollo cross-platform con integración académica segura.  
+Establecer base técnica robusta para la aplicación web con diseño modular en `src/estudiants`.  
 
 ### 1.1 Inicialización del proyecto móvil  
 **Resultado esperado**  
-- Aplicación React Native funcional con Expo Managed Workflow  
-- Arquitectura modular por dominio educativo  
+- Aplicación Next.js configurada con módulo `src/estudiants`
+- Diseño Mobile First responsivo
 - Sistema de build y distribución para iOS/Android  
 
 **Acciones**  
 - Crear proyecto con Expo SDK 50+ y TypeScript  
-- Configurar estructura de carpetas: `@/core`, `@/academic`, `@/gamification`, `@/ui`  
-- Implementar sistema de temas dinámicos (modo claro/oscuro institucional)  
+- Configurar estructura: `src/estudiants/{components,services,hooks,types}`
+- Implementar Layout específico para estudiantes (sin navegación de admin)
 - Configurar ESLint/Prettier con reglas pedagógicas (ej.: prohibir `any` en tipos académicos)  
 
 **Prompt LLM tipo**  
-> Inicializa proyecto React Native con Expo, TypeScript y arquitectura modular orientada a dominio educativo, sin incluir lógica de negocio gamificada.  
+> Inicializa módulo de estudiantes en Next.js con arquitectura limpia y diseño mobile-first.
 
 ### 1.2 Conexión a sistemas académicos existentes  
 **Resultado esperado**  
 - Sincronización segura con SAEFL (base de datos `s2526`)  
-- Cacheo offline de datos académicos críticos  
-- Estrategia de reconciliación de datos en entornos con conectividad intermitente  
+- Sincronización segura con SAEFL (base de datos `s2526`)  
 
 **Acciones**  
 - Diseñar adaptador de API REST para SAEFL con endpoints específicos  
 - Implementar servicio de sincronización incremental con timestamps  
-- Configurar SQLite local para almacenamiento offline  
 - Establecer protocolo de autenticación OAuth 2.0 con el SGA  
 
 **Checkpoint**  
 ✅ Perfil académico del estudiante cargado al iniciar sesión  
-✅ Materias y grado actual disponibles sin conexión después de primera sincronización  
+✅ Materias y grado actual disponibles tras primera sincronización  
 
 ### 1.3 Sistema de autenticación y contexto académico  
 **Resultado esperado**  
@@ -501,11 +499,6 @@ Garantizar estabilidad, seguridad y capacidad para toda la institución.
   - Otorgamiento de insignias con criterios cumplidos  
 - Reporte de auditoría descargable para autoridades educativas  
 
-### 12.2 Estrategia offline-first  
-- Cacheo inteligente de ejercicios para zonas con conectividad limitada  
-- Sincronización diferida de XP/insignias al recuperar conexión  
-- Mecanismo de reconciliación para conflictos de datos  
-
 ### 12.3 Performance  
 - Tiempo de carga inicial < 2s en dispositivos gama media  
 - Generación de práctica < 1s incluso con 10k+ ejercicios en banco  
@@ -519,7 +512,7 @@ Este roadmap está diseñado para:
 ✅ **Priorizar impacto pedagógico** — Cada mecánica de juego está validada por teoría del aprendizaje  
 ✅ **Respetar el ecosistema institucional** — Integración profunda con SAEFL (base de datos `s2526`)  
 ✅ **Escalar progresivamente** — MVP funcional en 12 semanas, madurez completa en 9 meses  
-✅ **Garantizar equidad** — Acceso offline, diseño inclusivo, sin paywalls para funcionalidades core  
+✅ **Garantizar equidad** — Diseño inclusivo, sin paywalls para funcionalidades core  
 
 **Criterios de éxito institucional**  
 - 📈 30% aumento en práctica autónoma fuera del aula  

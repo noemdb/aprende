@@ -11,11 +11,11 @@
 
 ### Opción A (correcta para este roadmap)
 
-**Aplicación móvil nativa como producto primario**
+**Aplicación Web Adaptativa (Mobile First)**
 
-* React Native (Expo Managed)
-* UX diseñada para sesiones cortas (5–15 min)
-* Offline como requisito, no como mejora futura
+* Next.js + TailwindCSS
+* Módulo aislado en `src/estudiants`
+* Acceso inmediato sin instalación
 
 ### Opción B (tentadora pero errónea)
 
@@ -23,15 +23,15 @@ Web app + PWA + wrapper móvil
 
 ### Por qué es irreversible
 
-* La arquitectura offline-first **no se injerta después**
-* Los patrones de UX cognitivo cambian completamente
-* El motor de prácticas depende del tiempo y contexto móvil
+* Dependencia de stores de aplicaciones (Apple/Google)
+* Barrera de entrada (instalación)
+* Complejidad de mantenimiento de dos codebases
 
 ### Decisión recomendada
 
 **Opción A obligatoria**
 
-> Si el mobile no es first-class, la app fracasa como herramienta pedagógica cotidiana.
+> La web permite iterar rápido y eliminar barreras de acceso.
 
 ---
 
@@ -39,11 +39,11 @@ Web app + PWA + wrapper móvil
 
 ### Opción A
 
-Expo Managed Workflow
+Single Page Application (SPA / PWA)
 
 ### Opción B
 
-Bare workflow / RN CLI puro
+Next.js (App Router)
 
 ### Impacto irreversible
 
@@ -52,7 +52,7 @@ Bare workflow / RN CLI puro
   * pipeline de build
   * ciclo de upgrades
   * compatibilidad de librerías nativas
-* Migrar **fuera** de Expo después es costoso y doloroso
+* Migrar a móvil nativo luego es posible con Capacitor/Expo
 
 ### Análisis crítico
 
@@ -61,44 +61,15 @@ Bare workflow / RN CLI puro
 
 ### Decisión recomendada
 
-**Expo Managed** con regla explícita:
+**Next.js PWA** con regla explícita:
 
-> Cualquier dependencia nativa debe justificar por qué Expo no basta.
-
----
-
-## DECISIÓN 3 — Offline-first como arquitectura, no como feature
-
-### Opción A
-
-Offline-first desde el día 1
-
-### Opción B
-
-Offline “cuando tengamos tiempo”
-
-### Por qué no es reversible
-
-* Los modelos de datos
-* Las colisiones de estado
-* La semántica de “verdad” (SAEFL vs local)
-
-Si se ignora ahora, luego:
-
-* XP se duplica
-* Streaks se rompen
-* Confianza institucional se pierde
-
-### Decisión recomendada
-
-Offline-first **obligatorio**, incluso con:
-
-* funcionalidades limitadas
-* datos parciales
+> Todo componente debe ser responsive y touch-friendly.
 
 ---
 
-## DECISIÓN 4 — Contexto académico como estado global obligatorio
+---
+
+## DECISIÓN 3 — Contexto académico como estado global obligatorio
 
 ### Opción A
 
@@ -127,7 +98,7 @@ Esto obliga a:
 
 ---
 
-## DECISIÓN 5 — Multi-rol en una sola app vs. apps separadas
+## DECISIÓN 4 — Multi-rol en una sola app vs. apps separadas
 
 ### Opción A
 
@@ -160,29 +131,9 @@ Complejidad de permisos
 
 ---
 
-## DECISIÓN 6 — Cache académico local como “mini-sistema”
-
-### Opción A
-
-SQLite estructurado (espejo parcial de s2526)
-
-### Opción B
-
-AsyncStorage / key-value suelto
-
-### Por qué es irreversible
-
-* Queries complejas offline
-* Reconciliación posterior
-* Consistencia pedagógica
-
-### Decisión recomendada
-
-**SQLite desde el inicio**, aunque duela un poco más.
-
 ---
 
-## DECISIÓN 7 — Sin lógica de negocio en UI (tolerancia cero)
+## DECISIÓN 5 — Sin lógica de negocio en UI (tolerancia cero)
 
 ### Opción A
 
@@ -208,7 +159,7 @@ En educación institucional:
 
 ---
 
-## DECISIÓN 8 — Tipado estricto como contrato pedagógico
+## DECISIÓN 6 — Tipado estricto como contrato pedagógico
 
 ### Opción A
 
@@ -232,7 +183,7 @@ Strict TS desde el día 1.
 
 ---
 
-## DECISIÓN 9 — Autenticación institucional como frontera dura
+## DECISIÓN 7 — Autenticación institucional como frontera dura
 
 ### Opción A
 
@@ -254,7 +205,7 @@ Auth institucional **desde la primera build usable**.
 
 ---
 
-## DECISIÓN 10 — Qué NO entra en FASE 1 (igual de importante)
+## DECISIÓN 8 — Qué NO entra en FASE 1 (igual de importante)
 
 Se decide explícitamente **no construir**:
 
@@ -273,12 +224,10 @@ Se decide explícitamente **no construir**:
 
 FASE 1 solo se considera completa si:
 
-* [ ] App móvil usable offline
 * [ ] Contexto académico persistente
 * [ ] Login institucional real
 * [ ] Cambio de rol sin reinstalar
 * [ ] Cero lógica pedagógica en UI
-* [ ] Cache local coherente con SAEFL
 
 ---
 
