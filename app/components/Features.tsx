@@ -1,7 +1,7 @@
 'use client';
 
 import FadeIn from './FadeIn';
-import { Gamepad2, BrainCircuit, WifiOff, School, Award, Activity } from 'lucide-react';
+import { Gamepad2, BrainCircuit, Sparkles, School, Award, Activity } from 'lucide-react';
 
 const features = [
     {
@@ -18,16 +18,16 @@ const features = [
     },
     {
         title: "Sincronización SAEFL",
-        description: "Tus áreas de formación, notas y profesores sincronizados en tiempo real con la base de datos institucional.",
+        description: "Tus áreas de formación, plan de actividades, notas y profesores sincronizados en tiempo real con la base de datos institucional.",
         icon: BrainCircuit,
         color: "text-teal-400"
     },
-    // {
-    //     title: "Modo Offline First",
-    //     description: "Descarga tus prácticas y estudia sin conexión. El progreso se sincroniza automáticamente cuando vuelves a estar online.",
-    //     icon: WifiOff,
-    //     color: "text-orange-400"
-    // },
+    {
+        title: "Tutoría con IA",
+        description: "Obtén explicaciones instantáneas y retroalimentación personalizada de nuestra IA (LLM KaniOS) entrenada que te ayudará a superar cualquier reto académico.",
+        icon: Sparkles,
+        color: "text-blue-400"
+    },
     {
         title: "Insignias",
         description: "Colecciona insignias por dominio académico, constancia y velocidad. Conviértete en un 'Maestro de Matemáticas'.",
@@ -64,8 +64,8 @@ export default function Features() {
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {features.map((feature, index) => (
-                        <FadeIn key={index} delay={index * 0.1}>
-                            <div className="group p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-1">
+                        <FadeIn key={index} delay={index * 0.1} className="h-full">
+                            <div className="group p-8 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-1 h-full">
                                 <div className={`w-12 h-12 rounded-2xl bg-slate-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 ${feature.color}`}>
                                     <feature.icon className="w-6 h-6" />
                                 </div>
