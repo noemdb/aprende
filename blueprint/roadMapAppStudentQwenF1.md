@@ -13,9 +13,9 @@
 
 **Aplicación Web Adaptativa (Mobile First)**
 
-* Next.js + TailwindCSS
-* Módulo aislado en `src/estudiants`
-* Acceso inmediato sin instalación
+- Next.js + TailwindCSS
+- Módulo aislado en `src/estudiants`
+- Acceso inmediato sin instalación
 
 ### Opción B (tentadora pero errónea)
 
@@ -23,9 +23,9 @@ Web app + PWA + wrapper móvil
 
 ### Por qué es irreversible
 
-* Dependencia de stores de aplicaciones (Apple/Google)
-* Barrera de entrada (instalación)
-* Complejidad de mantenimiento de dos codebases
+- Dependencia de stores de aplicaciones (Apple/Google)
+- Barrera de entrada (instalación)
+- Complejidad de mantenimiento de dos codebases
 
 ### Decisión recomendada
 
@@ -35,35 +35,50 @@ Web app + PWA + wrapper móvil
 
 ---
 
-## DECISIÓN 2 — Expo Managed vs. Bare / Custom Native
+## DECISIÓN 2 — PWA para Móviles vs. Aplicaciones Nativas (Postergar a v2.0)
 
-### Opción A
+### Opción A (DECISIÓN ACTUAL)
 
-Single Page Application (SPA / PWA)
+**Progressive Web App (PWA) con Next.js**
 
-### Opción B
+- Instalable desde navegador (sin app stores)
+- Funcionamiento offline básico
+- Notificaciones push (Android completo, iOS limitado)
+- Desarrollo único para web y móvil
 
-Next.js (App Router)
+### Opción B (ROADMAP FUTURO v2.0)
 
-### Impacto irreversible
+**Aplicaciones Nativas (React Native / Flutter)**
 
-* Expo fija:
+- Acceso completo a APIs nativas
+- Publicación en App Store / Play Store
+- Funcionalidades avanzadas: cámara, sensores, NFC
 
-  * pipeline de build
-  * ciclo de upgrades
-  * compatibilidad de librerías nativas
-* Migrar a móvil nativo luego es posible con Capacitor/Expo
+### Impacto irreversible de elegir PWA primero
+
+- **Ventajas**:
+  - Cero fricción de instalación (no stores)
+  - Iteración rápida sin aprobaciones de tiendas
+  - Un código para web + móvil
+  - Migrar a nativo luego es posible con Capacitor
+
+- **Limitaciones actuales**:
+  - Sin funcionalidades nativas avanzadas (cámara, sensores)
+  - Notificaciones push limitadas en iOS
+  - Experiencia ligeramente inferior vs. app nativa
 
 ### Análisis crítico
 
-* No hay requisitos nativos exóticos (Bluetooth, sensores críticos)
-* El roadmap prioriza velocidad institucional y estabilidad
+- No hay requisitos nativos exóticos para MVP (Bluetooth, sensores críticos)
+- El roadmap prioriza velocidad institucional y estabilidad
+- Estudiantes pueden usar desde cualquier dispositivo sin instalar
 
 ### Decisión recomendada
 
 **Next.js PWA** con regla explícita:
 
-> Todo componente debe ser responsive y touch-friendly.
+> Todo componente debe ser responsive y touch-friendly.  
+> La infraestructura móvil nativa se desarrollará en **versión 2.0** si el engagement valida la necesidad.
 
 ---
 
@@ -81,10 +96,10 @@ Contexto inferido por pantalla
 
 ### Impacto irreversible
 
-* Servicios
-* Cache
-* Validaciones
-* Seguridad
+- Servicios
+- Cache
+- Validaciones
+- Seguridad
 
 ### Regla irreversible
 
@@ -92,9 +107,9 @@ Contexto inferido por pantalla
 
 Esto obliga a:
 
-* errores visibles
-* estados claros
-* menos bugs “silenciosos”
+- errores visibles
+- estados claros
+- menos bugs “silenciosos”
 
 ---
 
@@ -110,11 +125,10 @@ App estudiante / app profesor / app padre
 
 ### Análisis sin romanticismo
 
-* Apps separadas:
-
-  * duplican lógica
-  * fragmentan contexto
-  * rompen sincronización familiar
+- Apps separadas:
+  - duplican lógica
+  - fragmentan contexto
+  - rompen sincronización familiar
 
 ### Riesgo real
 
@@ -124,8 +138,8 @@ Complejidad de permisos
 
 **Una sola app, roles dinámicos**, con:
 
-* feature flags
-* navegación contextual
+- feature flags
+- navegación contextual
 
 > Separar por rol es cómodo hoy, caro mañana.
 
@@ -145,9 +159,9 @@ UI pasiva + servicios
 
 ### Impacto irreversible
 
-* Testing
-* Auditoría
-* Escalabilidad
+- Testing
+- Auditoría
+- Escalabilidad
 
 En educación institucional:
 
@@ -171,8 +185,8 @@ Flexibilidad inicial
 
 ### Por qué es irreversible
 
-* Los tipos definen el dominio
-* El dominio académico **no es flexible**
+- Los tipos definen el dominio
+- El dominio académico **no es flexible**
 
 Un `any` hoy =
 un bug pedagógico mañana
@@ -195,13 +209,16 @@ Auth temporal “para probar”
 
 ### Riesgo real
 
-* Datos de menores
-* Fugas de contexto
-* Migraciones dolorosas
+- Datos de menores
+- Fugas de contexto
+- Migraciones dolorosas
 
 ### Decisión recomendada
 
-Auth institucional **desde la primera build usable**.
+**Auth Local (Credenciales) para Fase 1**.
+
+> Se ha decidido posponer OAuth 2.0 institucional.
+> Se prioriza login funcional seguro via credenciales (`src/auth.ts`).
 
 ---
 
@@ -209,12 +226,12 @@ Auth institucional **desde la primera build usable**.
 
 Se decide explícitamente **no construir**:
 
-* Gamificación visible
-* XP
-* Insignias
-* Rankings
-* IA
-* Adaptatividad avanzada
+- Gamificación visible
+- XP
+- Insignias
+- Rankings
+- IA
+- Adaptatividad avanzada
 
 > FASE 1 es suelo, no edificio.
 
@@ -224,10 +241,10 @@ Se decide explícitamente **no construir**:
 
 FASE 1 solo se considera completa si:
 
-* [ ] Contexto académico persistente
-* [ ] Login institucional real
-* [ ] Cambio de rol sin reinstalar
-* [ ] Cero lógica pedagógica en UI
+- [ ] Contexto académico persistente
+- [x] Login funcional (Credenciales locales)
+- [ ] Cambio de rol sin reinstalar
+- [ ] Cero lógica pedagógica en UI
 
 ---
 
@@ -235,12 +252,11 @@ FASE 1 solo se considera completa si:
 
 Si FASE 1 se hace bien:
 
-* FASES 2–7 fluyen casi solas.
+- FASES 2–7 fluyen casi solas.
 
 Si FASE 1 se hace “rápida”:
 
-* El proyecto **no muere**, pero se vuelve:
-
-  * frágil
-  * in-auditable
-  * políticamente inviable en una institución escolar.
+- El proyecto **no muere**, pero se vuelve:
+  - frágil
+  - in-auditable
+  - políticamente inviable en una institución escolar.

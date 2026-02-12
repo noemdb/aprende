@@ -1,21 +1,31 @@
 'use client';
 
+import { useAuthStore } from '@/estudiants/hooks/useAuthStore';
 import FadeIn from '../../../components/FadeIn';
 import { Target, ArrowRight, Play, Trophy, BookOpen, Brain, Clock, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 export default function StudentDashboard() {
+    const { user, academicContext } = useAuthStore();
+    const { student } = academicContext;
+    const fullName = student 
+        ? `${student.lastname} ${student.name}`
+        : (user?.name || 'Estudiante');
+    const displayName = student ? fullName : (user?.name?.split(' ')[0] || 'Estudiante');
+
     return (
         <div className="space-y-12 pb-12">
             {/* Welcome & Daily Goal */}
             <div className="grid lg:grid-cols-3 gap-8">
-                <div className="lg:col-span-2 space-y-10">
+                <div className="lg:col-span-2 space-y-2 w-full">
                     <FadeIn delay={0.1}>
                         <div className="flex flex-col gap-2">
                             <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">
-                                ¡Hola, <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent drop-shadow-sm">Angela</span>!
+                                ¡Hola, <span className="bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text text-transparent drop-shadow-sm">{displayName}</span>!
                             </h1>
-                            <p className="text-slate-400 text-lg font-medium">¿Lista para subir de nivel hoy?</p>
+                            <p className="text-slate-400 text-lg font-medium">
+                                Lapso: <span className="text-emerald-400">{academicContext.currentLapso?.name || 'Cargando...'}</span>
+                            </p>
                         </div>
                     </FadeIn>
 
@@ -101,53 +111,87 @@ export default function StudentDashboard() {
                 </div>
             </div>
 
-            {/* Resume Learning */}
+            {/* Resume Learning / Academic Activities */}
             <div className="space-y-6">
                 <FadeIn delay={0.4}>
-                    <div className="flex items-center gap-3">
-                        <div className="w-1 h-8 bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
-                        <h3 className="text-2xl font-black text-white tracking-tight">Continuar Aprendiendo</h3>
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                            <div className="w-1 h-8 bg-emerald-500 rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+                            <h3 className="text-2xl font-black text-white tracking-tight">Actividades Académicas</h3>
+                        </div>
+                        {academicContext.activities?.length > 0 && (
+                            <span className="text-xs font-bold text-slate-500 uppercase tracking-widest bg-white/5 px-3 py-1 rounded-full border border-white/5">
+                                {academicContext.activities.length} Activas
+                            </span>
+                        )}
                     </div>
                 </FadeIn>
 
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {[
-                        { title: 'Ecuaciones 2do Grado', course: 'Matemáticas', progress: 65, color: '#10b981', icon: Brain },
-                        { title: 'Leyes de Newton', course: 'Física', progress: 30, color: '#06b6d4', icon: Zap },
-                        { title: 'Tabla Periódica', course: 'Química', progress: 12, color: '#8b5cf6', icon: BookOpen },
-                    ].map((item, i) => (
-                        <FadeIn key={i} delay={0.5 + i * 0.1}>
-                            <button className="w-full text-left bg-white/5 border border-white/5 p-6 rounded-[2rem] hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 group h-full flex flex-col relative overflow-hidden">
-                                <div className="absolute top-0 right-0 w-32 h-32 opacity-10 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" style={{ backgroundColor: item.color }} />
+                    {academicContext.activities?.length > 0 ? (
+                        academicContext.activities.slice(0, 3).map((item, i) => {
+                            const progress = item.boletin?.nota ? 100 : 0; // Simple progress for now
+                            const color = '#10b981'; // Emerald for academic facts
+                            
+                            return (
+                                <FadeIn key={i} delay={0.5 + i * 0.1}>
+                                    <button className="w-full text-left bg-white/5 border border-white/5 p-6 rounded-[2rem] hover:bg-white/10 hover:-translate-y-2 transition-all duration-300 group h-full flex flex-col relative overflow-hidden">
+                                        <div className="absolute top-0 right-0 w-32 h-32 opacity-10 blur-3xl rounded-full translate-x-1/2 -translate-y-1/2" style={{ backgroundColor: color }} />
 
-                                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border border-white/10 shadow-xl transition-all group-hover:scale-110" style={{ backgroundColor: `${item.color}15`, color: item.color }}>
-                                    <item.icon size={28} />
-                                </div>
+                                        <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 border border-white/10 shadow-xl transition-all group-hover:scale-110" style={{ backgroundColor: `${color}15`, color: color }}>
+                                            <Brain size={28} />
+                                        </div>
 
-                                <div className="flex-1">
-                                    <p className="text-[10px] font-black uppercase tracking-widest mb-2 opacity-50" style={{ color: item.color }}>{item.course}</p>
-                                    <h4 className="font-bold text-white text-lg mb-6 group-hover:text-emerald-400 transition-colors leading-tight">{item.title}</h4>
-                                </div>
+                                        <div className="flex-1">
+                                            <div className="flex items-center justify-between mb-2">
+                                                <p className="text-[10px] font-black uppercase tracking-widest opacity-50" style={{ color: color }}>{item.asignatura_name}</p>
+                                                {item.is_ai_assisted && (
+                                                    <div className="bg-purple-500/20 text-purple-400 text-[8px] font-black px-1.5 py-0.5 rounded border border-purple-500/30 flex items-center gap-1">
+                                                        <Zap size={8} /> AI
+                                                    </div>
+                                                )}
+                                            </div>
+                                            <h4 className="font-bold text-white text-lg mb-6 group-hover:text-emerald-400 transition-colors leading-tight h-12 line-clamp-2">
+                                                {item.evaluacion.description || item.plan.description || 'Actividad sin descripción'}
+                                            </h4>
+                                        </div>
 
-                                <div className="space-y-2.5">
-                                    <div className="flex justify-between items-end">
-                                        <span className="text-[10px] text-slate-500 font-black uppercase tracking-tighter">Completado</span>
-                                        <span className="text-xs font-black text-white">{item.progress}%</span>
-                                    </div>
-                                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden p-[1px]">
-                                        <div className="h-full rounded-full transition-all duration-1000 shadow-lg" style={{ width: `${item.progress}%`, backgroundColor: item.color, boxShadow: `0 0 10px ${item.color}60` }} />
-                                    </div>
-                                </div>
-                            </button>
+                                        <div className="space-y-2.5">
+                                            <div className="flex justify-between items-end">
+                                                <span className="text-[10px] text-slate-500 font-black uppercase tracking-tighter">
+                                                    {item.boletin?.nota ? 'Calificado' : 'Pendiente'}
+                                                </span>
+                                                <span className="text-xs font-black text-white">{item.boletin?.nota || '-'} pts</span>
+                                            </div>
+                                            <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden p-[1px]">
+                                                <div 
+                                                    className="h-full rounded-full transition-all duration-1000 shadow-lg" 
+                                                    style={{ 
+                                                        width: `${progress}%`, 
+                                                        backgroundColor: item.boletin?.nota ? color : '#334155',
+                                                        boxShadow: item.boletin?.nota ? `0 0 10px ${color}60` : 'none' 
+                                                    }} 
+                                                />
+                                            </div>
+                                        </div>
+                                    </button>
+                                </FadeIn>
+                            );
+                        })
+                    ) : (
+                        <FadeIn delay={0.5}>
+                            <div className="col-span-full bg-white/5 border border-dashed border-white/10 rounded-[2rem] p-12 text-center">
+                                <p className="text-slate-500 font-bold">No hay actividades registradas para este lapso.</p>
+                            </div>
                         </FadeIn>
-                    ))}
+                    )}
 
                     <FadeIn delay={0.8}>
                         <button className="w-full h-full bg-emerald-500/5 border-2 border-dashed border-emerald-500/20 rounded-[2rem] flex flex-col items-center justify-center gap-4 text-emerald-500/60 hover:text-emerald-400 hover:border-emerald-500/40 hover:bg-emerald-500/10 transition-all p-8 group">
                             <div className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 group-hover:scale-110 transition-transform">
                                 <ArrowRight size={28} />
                             </div>
-                            <span className="font-black text-sm uppercase tracking-widest">Explorar Cursos</span>
+                            <span className="font-black text-sm uppercase tracking-widest">Ver Todo el Plan</span>
                         </button>
                     </FadeIn>
                 </div>

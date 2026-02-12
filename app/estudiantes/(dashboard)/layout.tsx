@@ -1,10 +1,11 @@
-// /home/nuser/code/aprende/app/estudiantes/layout.tsx
 'use client';
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import { Home, Zap, Book, User, Flame, Star, LogOut, ChevronLeft, ChevronRight } from 'lucide-react';
+import { SessionProvider } from 'next-auth/react';
+import AuthProvider from '@/components/AuthProvider';
 
 // Importar el CSS personalizado
 import './globals.css';
@@ -13,6 +14,39 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
     const pathname = usePathname();
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [isMobileOpen, setIsMobileOpen] = useState(false); // New state for mobile
+
+    return (
+        <SessionProvider basePath={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/api/auth`}>
+            <AuthProvider>
+                <StudentLayoutContent 
+                    pathname={pathname}
+                    isCollapsed={isCollapsed}
+                    setIsCollapsed={setIsCollapsed}
+                    isMobileOpen={isMobileOpen}
+                    setIsMobileOpen={setIsMobileOpen}
+                >
+                    {children}
+                </StudentLayoutContent>
+            </AuthProvider>
+        </SessionProvider>
+    );
+}
+
+function StudentLayoutContent({ 
+    children, 
+    pathname,
+    isCollapsed,
+    setIsCollapsed,
+    isMobileOpen,
+    setIsMobileOpen
+}: { 
+    children: React.ReactNode;
+    pathname: string;
+    isCollapsed: boolean;
+    setIsCollapsed: (collapsed: boolean) => void;
+    isMobileOpen: boolean;
+    setIsMobileOpen: (open: boolean) => void;
+}) {
 
     // Detectar tamaño de pantalla
     useEffect(() => {
@@ -136,7 +170,16 @@ export default function StudentLayout({ children }: { children: React.ReactNode 
                 </nav>
 
                 <div className="p-2 border-t border-[#1b3c2e]">
-                    <button className="flex items-center justify-center w-full p-3 rounded-lg text-[#a3b18a] hover:text-red-400 hover:bg-red-500/10 transition-colors text-sm font-medium relative">
+                    <button 
+                        onClick={() => {
+                            // Using window.location for a hard refresh ensures clearing completely any client state
+                            // But standard signOut is usually enough. Let's use standard signOut first.
+                            import('next-auth/react').then(({ signOut }) => {
+                                signOut({ callbackUrl: `${process.env.NEXT_PUBLIC_BASE_PATH || ''}/login` });
+                            });
+                        }}
+                        className="flex items-center justify-center w-full p-3 rounded-lg text-[#a3b18a] hover:text-red-400 hover:bg-red-500/10 transition-colors text-sm font-medium relative"
+                    >
                         <LogOut size={18} />
 
                         {isCollapsed && !isMobileOpen && (

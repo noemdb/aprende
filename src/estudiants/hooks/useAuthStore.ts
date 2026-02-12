@@ -1,60 +1,62 @@
+'use client';
+
 import { create } from 'zustand';
-import { persist, createJSONStorage } from 'zustand/middleware';
-import { SaeflStudent } from '../types/saefl';
+import { persist } from 'zustand/middleware';
+import { SaeflLapso, SaeflPensum, SaeflStudent } from '../types/saefl';
+import { AcademicActivity } from '../types/academic';
+
+interface AcademicContext {
+  currentLapso: SaeflLapso | null;
+  student: SaeflStudent | null;
+  academicLoad: SaeflPensum[];
+  activities: AcademicActivity[];
+}
 
 interface AuthState {
-    status: 'idle' | 'loading' | 'authenticated' | 'error';
-    user: SaeflStudent | null;
-    token: string | null;
-    error: string | null;
-
-    login: (ci: string, password: string) => Promise<boolean>;
-    logout: () => void;
+  isAuthenticated: boolean;
+  user: {
+    id: number;
+    name: string;
+    role: 'student' | 'teacher' | 'parent';
+  } | null;
+  academicContext: AcademicContext; // New field
+  // Login/Logout will now be handled by NextAuth
+  setSession: (user: any) => void;
+  setAcademicContext: (context: AcademicContext) => void; // New action
+  clearSession: () => void;
 }
 
 export const useAuthStore = create<AuthState>()(
-    persist(
-        (set) => ({
-            status: 'idle',
-            user: null,
-            token: null,
-            error: null,
-
-            login: async (ci, password) => {
-                set({ status: 'loading', error: null });
-                try {
-                    // MOCK LOGIN
-                    await new Promise((resolve) => setTimeout(resolve, 800));
-
-                    if (ci === '12345' && password === 'admin') {
-                        const mockUser: SaeflStudent = {
-                            id: 1,
-                            ci_estudiant: '12345',
-                            name: 'Estudiante',
-                            lastname: 'Web',
-                            grado_inicial_id: 1,
-                            seccion_inicial: 'A',
-                            representant_id: 1,
-                            status_active: true,
-                        };
-                        set({ status: 'authenticated', user: mockUser, token: 'mock-web-token' });
-                        return true;
-                    } else {
-                        throw new Error('Credenciales inválidas');
-                    }
-                } catch (e: any) {
-                    set({ status: 'error', error: e.message });
-                    return false;
-                }
-            },
-
-            logout: () => {
-                set({ status: 'idle', user: null, token: null });
-            },
-        }),
-        {
-            name: 'estudiante-auth-storage',
-            storage: createJSONStorage(() => localStorage), // Persist to localStorage
+  persist(
+    (set) => ({
+      isAuthenticated: false,
+      user: null,
+      academicContext: {
+        currentLapso: null,
+        student: null,
+        academicLoad: [],
+        activities: [],
+      },
+      setSession: (user) => set({ isAuthenticated: true, user }),
+      setAcademicContext: (context) => set({ academicContext: context }),
+      clearSession: () => set({ 
+        isAuthenticated: false, 
+        user: null, 
+        academicContext: { currentLapso: null, student: null, academicLoad: [], activities: [] } // Clear context too
+      }), 
+    }),
+    {
+      name: 'auth-storage',
+      version: 2, // Upgraded from default 0/1
+      migrate: (persistedState: any, version: number) => {
+        if (version < 2) {
+          // If activities is missing, ensure it's initialized
+          if (persistedState.academicContext && !persistedState.academicContext.activities) {
+            persistedState.academicContext.activities = [];
+          }
         }
-    )
+        return persistedState;
+      },
+    }
+  )
 );
